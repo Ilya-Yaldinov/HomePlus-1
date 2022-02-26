@@ -53,11 +53,11 @@ void ShowFloat(float x)
 void ShowDouble(double x) {
 	cout << "\ndouble:";
 	cout << "\nBig-Endian:";
-	for (std::size_t i = sizeof(x); i > 0; i--)
-		std::cout << ' ' << std::bitset<8>(reinterpret_cast<unsigned char*>(&x)[i]);
+	for (int i = sizeof(x)-1; i >= 0; i--)
+		std::cout << ' ' << std::bitset<8>(reinterpret_cast<char*>(&x)[i]);
 	cout << "\nLittle-Endian:";
-	for (std::size_t i = 0; i < sizeof(x); i++)
-		std::cout << ' ' << std::bitset<8>(reinterpret_cast<unsigned char*>(&x)[i]);
+	for (int i = 0; i <= sizeof(x) - 1; i++)
+		std::cout << ' ' << std::bitset<8>(reinterpret_cast<char*>(&x)[i]);
 }
 
 void ShowByte(int x)
